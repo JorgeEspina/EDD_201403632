@@ -2,10 +2,10 @@ EDD_201403632
 
 -------------------------------------------------------------------------------------------------------------
 
-Estructuras de Datos
-Sección : "A"
-Vacaciones de Diciembre 2017
-Practicas y Proyectos Realizados…!
-Jorge David Espina Molina
+Estructuras de Datos  
+Sección : "A"   
+Vacaciones de Diciembre 2017  
+Practicas y Proyectos Realizados…!  
+Jorge David Espina Molina -->
 201403632
 -------------------------------------------------------------------------------------------------------------
