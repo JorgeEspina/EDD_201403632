@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Recursos/if_37_document_584879.png</file>
+        <file>Recursos/if_5332_-_MySpace_1314245.png</file>
+        <file>Recursos/if_airplane_1120625.png</file>
+        <file>Recursos/if_Airport_22906.png</file>
+        <file>Recursos/if_arrow_play_button_next_right_previous_1076765.png</file>
+        <file>Recursos/if_CarRepair_22908.png</file>
+        <file>Recursos/if_ContainerRed_22891.png</file>
+        <file>Recursos/if_luggage_416411.png</file>
+        <file>Recursos/if_plane_1055008.png</file>
+        <file>Recursos/if_Solution_2698219.png</file>
+        <file>Recursos/if_support_2698217.png</file>
+        <file>Recursos/if_Web_Developmen_1562687.png</file>
+    </qresource>
+</RCC>
