@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1512942353 source:c:\users\jorge espina\desktop\[edd] tarea 1\tarea1_201403632\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1512948352 source:c:\users\jorge espina\edd_201403632\tarea1_201403632\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
