@@ -25,10 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        principal.cpp
+        principal.cpp \
+    coladbpasajeros.cpp
 
 HEADERS += \
-        principal.h
+        principal.h \
+    cola doble.h \
+    coladbpasajeros.h
 
 FORMS += \
         principal.ui

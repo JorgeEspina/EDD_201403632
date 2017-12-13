@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+
+
 namespace Ui {
 class Principal;
 }
@@ -15,8 +17,12 @@ public:
     explicit Principal(QWidget *parent = 0);
     ~Principal();
 
+private slots:
+    void on_btnSiguienteTurno_clicked();
+
 private:
     Ui::Principal *ui;
 };
+
 
 #endif // PRINCIPAL_H
