@@ -138,6 +138,10 @@ struct Nodo *Temporal2 = NULL;
           }
       }
 
+      void GraficarColaDesabordaje(){
+
+      }
+
 //LISTA SIMPLE DE ESTACIONES DE MANTENIMIENTO
       /*typedef struct Nodo Nodo;
       typedef struct ListaSimple ListaSimple;
@@ -257,6 +261,239 @@ struct Nodo *Temporal2 = NULL;
               std::cout<<"PILA DE DOCUMENTOS DEL PASAJERO VACIA"<<std::endl;
           }
       }
+
+// COLA DE AVIONES EN MANTENIMIENTO
+      struct NodoAvionesMantenimiento{
+          int Avion;
+          struct NodoAvionesMantenimiento *Siguiente;
+      };
+
+      struct NodoAvionesMantenimiento *PrimerAvionM = NULL;
+      struct NodoAvionesMantenimiento *UltimoAvionM = NULL;
+
+      void DesocuparColaAvionMantenimiento(){
+          struct NodoAvionesMantenimiento *AuxAvion = PrimerAvionM;
+          struct NodoAvionesMantenimiento * AuxAvion1;
+          if(AuxAvion == NULL){
+              std::cout << "COLA DE AVIONES EN MANTENIMIENTO" << std::endl;
+          }else{
+              while( AuxAvion != NULL){
+              AuxAvion1 = AuxAvion;
+              AuxAvion = AuxAvion->Siguiente;
+              free(AuxAvion1);
+              }
+          }
+
+      }
+
+      void InsertarAvionesColaMantenimiento( int NoAvion){
+          struct NodoAvionesMantenimiento *NuevoAvion = NULL;
+          //modificacion
+          NuevoAvion = (struct NodoAvionesMantenimiento*)malloc(sizeof(struct NodoAvionesMantenimiento));
+          NuevoAvion->Avion = NoAvion;
+          NuevoAvion->Siguiente = NULL;
+
+          if(PrimerAvionM == NULL){
+              PrimerAvionM = NuevoAvion;
+              UltimoAvionM = NuevoAvion;
+          }else{
+              UltimoAvionM->Siguiente = NuevoAvion;
+              UltimoAvionM = NuevoAvion;
+          }
+      }
+
+      void MostrarAvionesColaMantenimiento(){
+          struct NodoAvionesMantenimiento *AuxAviones = PrimerAvionM;
+          std::cout << "AVIONES EN COLA DE MANTENIMIENTO" << std::endl;
+          while (AuxAviones != NULL)
+          {
+              std::cout << AuxAviones->Avion << std::endl;
+              AuxAviones = AuxAviones->Siguiente;
+          }
+      }
+
+      int SacarAvionMantenimiento(){
+          if(PrimerAvionM != NULL){
+          int DatosAviones = PrimerAvionM->Avion;
+              struct NodoAvionesMantenimiento *AuxAvion = PrimerAvionM;
+              if(PrimerAvionM == UltimoAvionM){
+                  PrimerAvionM = NULL;
+                  UltimoAvionM = NULL;
+              }else{
+                  PrimerAvionM = PrimerAvionM->Siguiente;
+              }
+              free(AuxAvion);
+              return DatosAviones;
+          }else{
+              return -1;
+          }
+      }
+
+//LISTA DOBLEMENTE ENLAZADA DE ESCRITORIOS DE REGISTRO
+
+      struct NodoEscritoriosRegistro {
+             int Escritorio;
+             struct NodoEscritoriosRegistro *Anterior;
+             struct NodoEscritoriosRegistro * Siguiente;
+             //Nodo(int Dato);
+      };
+
+      struct NodoEscritoriosRegistro *PrimeroEscReg = NULL;
+      struct NodoEscritoriosRegistro *AuxTemporal = NULL;
+      struct NodoEscritoriosRegistro *AuxTemporal1 = NULL;
+      struct NodoEscritoriosRegistro *AuxTemporal2 = NULL;
+
+
+
+         void InsertaListaDobleEscritorios(int EscritorioRegistro){
+               if(PrimeroEscReg == NULL){
+                   AuxTemporal = (struct NodoEscritoriosRegistro*)malloc(1*sizeof(struct NodoEscritoriosRegistro));
+                   AuxTemporal->Siguiente = NULL;
+                   AuxTemporal->Anterior = NULL;
+                   AuxTemporal->Escritorio = EscritorioRegistro;
+                   PrimeroEscReg = AuxTemporal;
+                   AuxTemporal1 = PrimeroEscReg;
+               }else{
+                   AuxTemporal = (struct NodoEscritoriosRegistro*)malloc(1*sizeof(struct NodoEscritoriosRegistro));
+                   AuxTemporal->Siguiente = NULL;
+                   AuxTemporal->Anterior = NULL;
+                   AuxTemporal->Escritorio = EscritorioRegistro;
+                   AuxTemporal1->Siguiente = AuxTemporal;
+                   AuxTemporal->Anterior = AuxTemporal1;
+                   AuxTemporal1 = AuxTemporal;
+               }
+            }
+
+            void MostrarListaDobleEscritorios(){
+                AuxTemporal2 = PrimeroEscReg;
+                if(AuxTemporal2 == NULL){
+                    std::cout<< "---> Lista doblemenete enlazada de escritorios registrados esta vacia " << std::endl;
+                }else{
+                    while (AuxTemporal2->Siguiente != NULL){
+                        std::cout<<AuxTemporal2->Escritorio << std::endl;
+                        AuxTemporal2 = AuxTemporal2->Siguiente;
+                    }
+                    std::cout<< AuxTemporal2->Escritorio << std::endl;
+                }
+            }
+//COLA SIMPLE DE PASAJEROS EN ESCRITORIOS DE REGISTRO
+            struct NodoPasajerosEscritorios{
+                int NoPasajeroEscritorio;
+                struct NodoPasajerosEscritorios *Siguiente;
+            };
+
+            struct NodoPasajerosEscritorios *PrimerPasajeroEsc = NULL;
+            struct NodoPasajerosEscritorios *UltimoPasajeroEsc = NULL;
+
+            void DesocuparColaPasajeroEscritorio(){
+                struct NodoPasajerosEscritorios *AuxPasEsc = PrimerPasajeroEsc;
+                struct NodoPasajerosEscritorios * AuxPasEsc1;
+                if(AuxPasEsc == NULL){
+                    std::cout << "COLA DE PASAJEROS EN ESCRITORIO DE REGISTRO" << std::endl;
+                }else{
+                    while( AuxPasEsc != NULL){
+                    AuxPasEsc1 = AuxPasEsc;
+                    AuxPasEsc = AuxPasEsc->Siguiente;
+                    free(AuxPasEsc1);
+                    }
+                }
+            }
+
+            void InsertarColaPasajeroEscritorio( int PasajeroEscritorio){
+                struct NodoPasajerosEscritorios *NuevoPasajeroEscritorio = NULL;
+                NuevoPasajeroEscritorio = (struct NodoPasajerosEscritorios*)malloc(sizeof(struct NodoPasajerosEscritorios));
+                NuevoPasajeroEscritorio->NoPasajeroEscritorio = PasajeroEscritorio;
+                NuevoPasajeroEscritorio->Siguiente = NULL;
+
+                if(PrimerPasajeroEsc == NULL){
+                    PrimerPasajeroEsc = NuevoPasajeroEscritorio;
+                    UltimoPasajeroEsc = NuevoPasajeroEscritorio;
+                }else{
+                    UltimoPasajeroEsc->Siguiente = NuevoPasajeroEscritorio;
+                    UltimoPasajeroEsc = NuevoPasajeroEscritorio;
+                }
+            }
+
+            void MostrarPasajerosEscritorios(){
+                struct NodoPasajerosEscritorios *AuxPasaj = PrimerPasajeroEsc;
+                std::cout << "PASAJEROS EN ESCRITORIOS DE REGISTRO" << std::endl;
+                while (AuxPasaj != NULL)
+                {
+                    std::cout << AuxPasaj->NoPasajeroEscritorio << std::endl;
+                    AuxPasaj = AuxPasaj->Siguiente;
+                }
+            }
+
+            int SacarPasajeroEscritorio(){
+                if(PrimerPasajeroEsc != NULL){
+                int DatosPasajEscr = PrimerPasajeroEsc->NoPasajeroEscritorio;
+                    struct NodoPasajerosEscritorios *AuxPasEsc = PrimerPasajeroEsc;
+                    if(PrimerPasajeroEsc == UltimoPasajeroEsc){
+                        PrimerPasajeroEsc = NULL;
+                        UltimoPasajeroEsc = NULL;
+                    }else{
+                        PrimerPasajeroEsc = PrimerPasajeroEsc->Siguiente;
+                    }
+                    free(AuxPasEsc);
+                    return DatosPasajEscr;
+                }else{
+                    return -1;
+                }
+            }
+
+// LISTA CIRCULAR DOBLEMENTE ENLAZADA
+struct NodoMaletas{
+    int Maleta;
+    struct NodoMaletas *Anterior;
+    struct NodoMaletas *Siguiente;
+};
+/*
+typedef struct NodoMaletas NodoM;
+NodoM *ListaMaleta = NULL;*/
+struct NodoMaletas *ListaMaleta = NULL;
+
+void InsertarMaletas(int NoMaleta){
+    struct NodoMaletas *AuxMaletas = NULL;
+    AuxMaletas = (struct NodoMaletas*)malloc(sizeof(NodoMaletas));
+    if(AuxMaletas){
+        AuxMaletas->Maleta = NoMaleta;
+        if(ListaMaleta){
+            AuxMaletas->Anterior = ListaMaleta->Anterior;
+            AuxMaletas->Siguiente = ListaMaleta;
+            ListaMaleta->Anterior->Siguiente = AuxMaletas;
+            ListaMaleta->Anterior = AuxMaletas;
+        }else{
+            AuxMaletas->Anterior = AuxMaletas;
+            AuxMaletas->Siguiente = AuxMaletas;
+        }
+        ListaMaleta = AuxMaletas;
+    }
+}
+void MostrarMaletas(){
+    /*NodoMaletas *AuxMaleta = ListaMaleta;
+    int pos = 0;
+
+    std::cout << "MALETAS DE PASAJEROS" << std::endl;
+
+    while (AuxMaleta!=NULL)
+    {
+        std::cout << AuxMaleta->Maleta << std::endl;
+        AuxMaleta = AuxMaleta->Siguiente;
+        if(AuxMaleta == ListaMaleta)
+            pos++;
+    }
+    */
+    NodoMaletas *nodo = ListaMaleta;
+
+       do {
+        std::cout << nodo->Maleta << std::endl;
+          //printf("%d -> ", nodo->Maleta);
+          nodo = nodo->Siguiente;
+       } while(nodo != ListaMaleta);
+      // printf("\n");
+}
+
+
 
 
 
